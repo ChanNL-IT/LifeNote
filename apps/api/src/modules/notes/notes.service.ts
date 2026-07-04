@@ -3,10 +3,17 @@ import {
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
+import { Prisma } from "@prisma/client";
 import { PrismaService } from "../../prisma/prisma.service";
 import { CreateNoteDto } from "./dto/create-note.dto";
 import { NotesQueryDto } from "./dto/notes-query.dto";
 import { UpdateNoteDto } from "./dto/update-note.dto";
+
+type NoteWithTags = Prisma.NoteGetPayload<{
+  include: { noteTags: { include: { tag: true } } };
+}>;
+
+type TagPayload = NoteWithTags["noteTags"][number]["tag"];
 
 @Injectable()
 export class NotesService {
@@ -188,7 +195,7 @@ export class NotesService {
     return [{ isPinned: "desc" as const }, { updatedAt: "desc" as const }];
   }
 
-  private mapNote(note: any) {
+  private mapNote(note: NoteWithTags) {
     return {
       id: note.id,
       title: note.title,
@@ -200,14 +207,14 @@ export class NotesService {
       color: note.color,
       tags:
         note.noteTags
-          ?.filter((nt: any) => !nt.tag.deletedAt)
-          .map((nt: any) => this.mapTag(nt.tag)) ?? [],
+          ?.filter((nt) => !nt.tag.deletedAt)
+          .map((nt) => this.mapTag(nt.tag)) ?? [],
       createdAt: note.createdAt,
       updatedAt: note.updatedAt,
     };
   }
 
-  private mapTag(tag: any) {
+  private mapTag(tag: TagPayload) {
     return {
       id: tag.id,
       name: tag.name,

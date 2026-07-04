@@ -2,15 +2,14 @@
 
 ## Doing
 
-- Prepare Git commit and push for project memory files.
+- Document available commands and plan backend tests.
 
 ## Todo
 
-- Verify current Git remote and push workflow.
-- Restart the backend server.
-- Run `npm run build` after the dev server releases `apps/api/dist`.
-- Manually verify Notes and Tags endpoints in Swagger.
 - Confirm backend app structure with ChatGPT review.
+- Add backend tests for Auth.
+- Add backend tests for Notes.
+- Add backend tests for Tags.
 - Confirm Flutter app structure before implementation.
 - Document available commands for build, lint, test, and run.
 
@@ -19,4 +18,10 @@
 - Created initial AI collaboration instructions in `docs/LIFENOTE_CODEX_INSTRUCTIONS.md`.
 - Confirmed current Git branch is `develop`.
 - Set up AI collaboration files.
+- Verified current Git remote and push workflow.
+- Committed and pushed AI collaboration workflow to `origin/develop`.
 - Implemented Notes and Tags backend MVP improvements.
+- Restarted backend using `node dist/main.js` for verification.
+- Ran backend build successfully.
+- Ran backend lint successfully.
+- Manually verified Notes and Tags API flow.

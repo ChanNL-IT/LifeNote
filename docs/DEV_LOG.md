@@ -4,6 +4,50 @@
 
 ### Feature
 
+Backend build, lint, and Notes/Tags verification.
+
+### Summary
+
+Verified the backend after the Notes/Tags MVP changes. Added an ESLint flat config for ESLint 9, removed remaining explicit `any` usage from `notes.service.ts`, ran build/type-check/lint, and manually verified the Notes/Tags API flow against the local NestJS server.
+
+### Files Changed
+
+- `apps/api/eslint.config.cjs`
+- `apps/api/src/modules/notes/notes.service.ts`
+- `docs/PROJECT_STATE.md`
+- `docs/ROADMAP.md`
+- `docs/DEV_LOG.md`
+- `docs/TASKS.md`
+
+### Commands Executed
+
+- `docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"`
+- `npm run build`
+- `npm run lint`
+- `npx tsc --noEmit -p tsconfig.build.json`
+- `npm test -- --runInBand`
+- `node dist\main.js`
+- `Invoke-WebRequest -Uri http://localhost:3000/docs -UseBasicParsing`
+
+### Verification
+
+- Docker containers `lifenote_postgres` and `lifenote_redis` were running.
+- `npm run build` passed.
+- `npm run lint` passed.
+- `npx tsc --noEmit -p tsconfig.build.json` passed.
+- Swagger `/docs` returned `200 OK`.
+- Manual API flow passed: register, login, create tag, create note with tag, search notes, filter by tag, patch favorite/title, remove tag, add tag, delete note, restore note.
+
+### Notes
+
+- Jest is configured but still reports `No tests found` because there are no `*.spec.ts` files yet.
+- `nest start` attempted to rewrite `dist` and was blocked by sandbox permissions, so API verification used the already-built `node dist\main.js`.
+- Manual verification created a temporary local test user `codex-20260705015020@example.com`.
+
+## 2026-07-05
+
+### Feature
+
 AI collaboration workflow and project memory setup.
 
 ### Summary

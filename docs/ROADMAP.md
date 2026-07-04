@@ -36,7 +36,7 @@
 - [x] Delete note.
 - [x] Tags.
 - [x] Search.
-- [ ] Manual Swagger verification for Notes and Tags.
+- [x] Manual Swagger verification for Notes and Tags.
 - [ ] Notes and Tags tests.
 
 ## Phase 4: Flutter App

@@ -12,15 +12,15 @@ v0.1.0-backend-mvp
 
 ## Current Phase
 
-Backend MVP stabilization and AI collaboration setup.
+Backend MVP stabilization.
 
 ## Current Feature
 
-Git workflow preparation for project memory files.
+Backend local command documentation and test planning.
 
 ## Backend Status
 
-NestJS backend exists and Swagger has been opened at `http://localhost:3000/docs`. Auth, Users, Notes, Tags, Devices, and Sync modules exist. Devices and Sync are still placeholder-level. Notes and Tags were improved for MVP behavior and TypeScript check passed.
+NestJS backend exists and Swagger responds at `http://localhost:3000/docs`. Auth, Users, Notes, Tags, Devices, and Sync modules exist. Devices and Sync are still placeholder-level. Notes and Tags were improved for MVP behavior. Build, TypeScript check, lint, and manual Notes/Tags API verification passed.
 
 ## Flutter Status
 
@@ -28,7 +28,7 @@ Flutter app is not implemented yet. `apps/mobile/README.md` documents the intend
 
 ## Database Status
 
-PostgreSQL is configured through Docker Compose and Prisma schema exists. The developer reported Docker is running locally. Current database state still needs manual endpoint verification after restarting the backend.
+PostgreSQL is configured through Docker Compose and Prisma schema exists. Docker containers `lifenote_postgres` and `lifenote_redis` were verified running locally. Manual Notes/Tags API verification created a temporary Codex test user/note/tag in the local database.
 
 ## Current Goal
 
@@ -38,17 +38,18 @@ Create a shared project memory system so Developer, Codex, and ChatGPT can follo
 
 - Added standardized AI collaboration and project memory files.
 - Added Notes and Tags backend MVP improvements.
+- Committed and pushed AI collaboration workflow to `origin/develop`.
+- Verified backend build, lint, Swagger, and Notes/Tags API flow.
 
 ## Current Task
 
-Prepare commit and push workflow for the project memory files.
+Document available local development commands and plan backend tests.
 
 ## Next Task
 
-Commit the documentation changes, push the `develop` branch, then restart backend, run build, and manually verify Notes/Tags endpoints through Swagger.
+Add backend tests for Auth, Notes, and Tags before Flutter app scaffolding.
 
 ## Known Issues
 
-- `npm run build` was blocked while the NestJS dev server was locking files in `apps/api/dist`.
 - Jest is configured but no `*.spec.ts` tests exist yet.
 - Devices and Sync endpoints are placeholders.
