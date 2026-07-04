@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String?
+  displayName  String?
+  avatarUrl    String?
+  provider     String   @default("local")
+  providerId   String?
+  notes        Note[]
+  tags         Tag[]
+  devices      Device[]
+  syncEvents   SyncEvent[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  deletedAt    DateTime?
+}
+
+model Note {
+  id            String   @id @default(uuid())
+  userId        String
+  title         String
+  content       String   @default("")
+  contentFormat String   @default("markdown")
+  isFavorite    Boolean  @default(false)
+  isPinned      Boolean  @default(false)
+  isArchived    Boolean  @default(false)
+  color         String?
+  user          User     @relation(fields: [userId], references: [id])
+  noteTags      NoteTag[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  deletedAt     DateTime?
+  lastSyncedAt  DateTime?
+  @@index([userId])
+  @@index([updatedAt])
+  @@index([deletedAt])
+}
+
+model Tag {
+  id        String   @id @default(uuid())
+  userId    String
+  name      String
+  slug      String
+  color     String?
+  user      User     @relation(fields: [userId], references: [id])
+  noteTags  NoteTag[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+  @@unique([userId, slug])
+  @@index([userId])
+}
+
+model NoteTag {
+  noteId    String
+  tagId     String
+  note      Note   @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  tag       Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  @@id([noteId, tagId])
+}
+
+model Device {
+  id           String   @id @default(uuid())
+  userId       String
+  deviceName   String?
+  platform     String
+  appVersion   String?
+  pushToken    String?
+  user         User     @relation(fields: [userId], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  lastActiveAt DateTime?
+  @@index([userId])
+}
+
+model SyncEvent {
+  id         String   @id @default(uuid())
+  userId     String
+  deviceId   String?
+  entityType String
+  entityId   String
+  action     String
+  payload    Json?
+  user       User    @relation(fields: [userId], references: [id])
+  createdAt  DateTime @default(now())
+  @@index([userId])
+  @@index([createdAt])
+}
