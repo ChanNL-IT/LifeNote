@@ -7,7 +7,7 @@
 - [x] Add project memory files.
 - [x] Verify Git repository structure.
 - [x] Confirm branch strategy: `main`, `develop`, `feature/*`.
-- [ ] Confirm local development commands.
+- [x] Confirm local development commands.
 
 ## Phase 1: Backend Foundation
 
@@ -27,6 +27,7 @@
 - [x] Logout.
 - [x] Auth guards.
 - [ ] Basic auth tests.
+- [ ] Auth test plan.
 
 ## Phase 3: Notes Core
 
@@ -38,6 +39,7 @@
 - [x] Search.
 - [x] Manual Swagger verification for Notes and Tags.
 - [ ] Notes and Tags tests.
+- [x] Backend test plan.
 
 ## Phase 4: Flutter App
 

@@ -16,7 +16,7 @@ Backend MVP stabilization.
 
 ## Current Feature
 
-Backend local command documentation and test planning.
+Backend structure review preparation.
 
 ## Backend Status
 
@@ -40,10 +40,12 @@ Create a shared project memory system so Developer, Codex, and ChatGPT can follo
 - Added Notes and Tags backend MVP improvements.
 - Committed and pushed AI collaboration workflow to `origin/develop`.
 - Verified backend build, lint, Swagger, and Notes/Tags API flow.
+- Documented local development commands.
+- Created backend test plan.
 
 ## Current Task
 
-Document available local development commands and plan backend tests.
+Confirm backend app structure with ChatGPT review.
 
 ## Next Task
 

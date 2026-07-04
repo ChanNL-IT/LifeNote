@@ -2,16 +2,14 @@
 
 ## Doing
 
-- Document available commands and plan backend tests.
+- Confirm backend app structure with ChatGPT review.
 
 ## Todo
 
-- Confirm backend app structure with ChatGPT review.
 - Add backend tests for Auth.
 - Add backend tests for Notes.
 - Add backend tests for Tags.
 - Confirm Flutter app structure before implementation.
-- Document available commands for build, lint, test, and run.
 
 ## Done
 
@@ -25,3 +23,5 @@
 - Ran backend build successfully.
 - Ran backend lint successfully.
 - Manually verified Notes and Tags API flow.
+- Documented available local development commands.
+- Created backend test plan.

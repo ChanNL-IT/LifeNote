@@ -4,6 +4,44 @@
 
 ### Feature
 
+Local development commands and backend test planning.
+
+### Summary
+
+Documented the backend local development command set and created a backend test plan for Auth, Tags, and Notes. Updated project memory to move the next active task toward backend structure review and automated tests.
+
+### Files Changed
+
+- `docs/LOCAL_DEVELOPMENT.md`
+- `docs/BACKEND_TEST_PLAN.md`
+- `docs/PROJECT_STATE.md`
+- `docs/ROADMAP.md`
+- `docs/DEV_LOG.md`
+- `docs/TASKS.md`
+
+### Commands Executed
+
+- `Get-Content -Raw AGENTS.md`
+- `Get-Content -Raw docs\PROJECT_STATE.md`
+- `Get-Content -Raw docs\TASKS.md`
+- `Get-Content -Raw README.md`
+- `Get-Content -Raw apps\api\package.json`
+- `Get-Content -Raw docs\RUNNING.md`
+
+### Verification
+
+- Documentation-only change. No build, lint, or test command was required for code verification.
+- Commands were checked against `apps/api/package.json`, `docker-compose.yml`, and existing project docs.
+
+### Notes
+
+- The backend test plan recommends starting with service tests, then adding E2E coverage after a test database workflow is approved.
+- The current local PostgreSQL port is `5434`, matching `docker-compose.yml` and `apps/api/.env.example`.
+
+## 2026-07-05
+
+### Feature
+
 Backend build, lint, and Notes/Tags verification.
 
 ### Summary
